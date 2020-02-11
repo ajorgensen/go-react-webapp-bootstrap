@@ -1,0 +1,5 @@
+SecretKey: THIS_SHOULD_BE_CHANGED
+Port: 9092
+
+DatabaseDialect: "sqlite3"
+DatabaseURI: "data.db"
