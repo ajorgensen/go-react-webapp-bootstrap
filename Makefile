@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	(cd ./frontend && yarn build)
+	(cd ./frontend && npm install && yarn build)
 	go build
 
 .PHONY: serve
