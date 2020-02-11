@@ -46,7 +46,7 @@ func test(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func (a *API) initFrontEnd(router *chi.Mux) {
+func (a *API) initFrontend(router *chi.Mux) {
 	root := "./frontend/build"
 	fs := http.FileServer(http.Dir(root))
 
@@ -61,15 +61,15 @@ func (a *API) initFrontEnd(router *chi.Mux) {
 	}))
 }
 
-func (a *API) initBackEnd(router *chi.Mux) {
+func (a *API) initBackend(router *chi.Mux) {
 	router.Route("/api", func(r chi.Router) {
 		r.Get("/bar", a.apiHandler(test))
 	})
 }
 
 func (a *API) Init(router *chi.Mux) {
-	a.initFrontEnd(router)
-	a.initBackEnd(router)
+	a.initFrontend(router)
+	a.initBackend(router)
 }
 
 func (a *API) apiHandler(f func(http.ResponseWriter, *http.Request) error) http.HandlerFunc {
