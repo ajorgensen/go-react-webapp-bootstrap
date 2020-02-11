@@ -52,7 +52,7 @@ func (a *API) initFrontend(router *chi.Mux) {
 
 	router.Get("/*", a.handler(func(w http.ResponseWriter, r *http.Request) error {
 		if _, err := os.Stat(root + r.RequestURI); os.IsNotExist(err) {
-			http.StripPrefix(r.RequestURI, fs).ServeHTTP(w, r)
+			http.Error(w, http.StatusText(404), 404)
 		} else {
 			fs.ServeHTTP(w, r)
 		}
